@@ -1,6 +1,15 @@
 import cv2
-myimg = '/home/sebastian/Downloads/Untitled.jpeg' #change depending on your img location
-foto = cv2.imread(myimg)
-cv2.imshow('Foto', foto)
-cv2.waitKey()
+import mediapipe as mp
+
+cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+while True:
+    succes, frame = cap.read()
+    if succes:
+        cv2.imshow("Webcam", frame)
+        if cv2.waitKey(1)== ord('q'):
+            break
+
 cv2.destroyAllWindows()
